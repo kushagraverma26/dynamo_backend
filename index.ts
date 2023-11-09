@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from "express";
+import bodyParser from 'body-parser';
 
 import orderRoutes from './routes/orders';
 import reviewRoutes from './routes/reviews';
@@ -7,6 +8,9 @@ import paymentRoutes from './routes/payments';
 const port = 8000;
 
 const app: Express = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use('/orders', orderRoutes);
 app.use('/reviews', reviewRoutes);

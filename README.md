@@ -16,3 +16,6 @@ AWS_SECRET_ACCESS_KEY = "put_key_here"
 Change queryLimit to higher value (around 1000) to get more data. Since scan in expensive, this value is currently 10 for API testing purposes.
 
 queryLimit = 
+
+## API Descriptions:
+Refer to comments in the routes directory.
