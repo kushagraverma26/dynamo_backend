@@ -26,4 +26,29 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Query payment details when provided with an order_id
+// Input query parameter: orderId
+router.get('/query', async (req, res) => {
+    try {
+        const orderId = req.query.orderId
+
+        const command = new QueryCommand({
+            TableName: dbConstants.paymentTableName,
+            Limit: dbConstants.queryLimit,
+            KeyConditionExpression: "order_id = :myId",
+            ExpressionAttributeValues: {
+                ":myId" : orderId
+            }
+        });
+        const response = await docClient.send(command);
+        res.send(response);
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            status: false,
+            message: "Internal server error"
+        });
+    }
+})
+
 export default router
