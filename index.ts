@@ -5,6 +5,7 @@ import orderRoutes from './routes/orders';
 import reviewRoutes from './routes/reviews';
 import paymentRoutes from './routes/payments';
 import customerRoutes from './routes/customers';
+import itemRoutes from './routes/items';
 
 const port = 8000;
 
@@ -17,6 +18,7 @@ app.use('/orders', orderRoutes);
 app.use('/reviews', reviewRoutes);
 app.use('/payments', paymentRoutes);
 app.use('/customers', customerRoutes);
+app.use('/items', itemRoutes);
 
 app.get("/", (req: Request, res: Response) => {
     res.send("Hello World. Welcome to our CSC 244 Backend.");
